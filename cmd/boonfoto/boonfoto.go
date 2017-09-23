@@ -4,28 +4,33 @@ import (
 	"filescanner"
 	"log"
 
-	"github.com/rainycape/magick"
 	"gopkg.in/mgo.v2"
-	"os"
-	"bufio"
-	"math"
 	"fmt"
 	"time"
 	"gopkg.in/mgo.v2/bson"
 )
 
 type MongoPopulator struct {
-	coll mgo.Collection
+	coll *mgo.Collection
 }
 
 func (m MongoPopulator) visitImageFile(path string, modTime time.Time) {
-	fmt.Println("imageFile: ", path)
+	c, err := m.coll.Find(bson.M{"path": path}).Count()
+	if err != nil {
+		log.Fatal("Failed executing find: ", err)
+	}
+
+	if c > 0 {
+		return
+	}
+
+	m.coll.Insert(bson.M{"path": path, "mtime": modTime})
+	fmt.Println("Added imageFile: ", path)
 }
 
 type Foto struct {
 	Filename string
 }
-
 
 func main() {
 	d, err := time.ParseDuration("10s")
