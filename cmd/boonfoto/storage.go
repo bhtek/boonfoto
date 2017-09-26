@@ -9,7 +9,9 @@ import (
 )
 
 type Foto struct {
-	Filename string
+	id int32
+	path string
+	mtime time.Time
 }
 
 func Count(db *sql.DB, query string, args ...interface{}) (int) {
