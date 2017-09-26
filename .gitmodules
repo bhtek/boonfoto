@@ -1,3 +1,6 @@
 [submodule "src/github.com/mattn/go-sqlite3"]
 	path = src/github.com/mattn/go-sqlite3
 	url = https://github.com/mattn/go-sqlite3
+[submodule "src/github.com/rainycape/magick"]
+	path = src/github.com/rainycape/magick
+	url = https://github.com/rainycape/magick
