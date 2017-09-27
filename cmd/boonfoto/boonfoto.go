@@ -8,13 +8,7 @@ import (
 	"net/http"
 )
 
-func getIds() ([]int32) {
-	db, err := sql.Open("sqlite3", "./fotos.db")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
-
+func getIds(db *sql.DB) ([]int32) {
 	rows, err := db.Query("SELECT id FROM fotos ORDER BY mtime, path")
 	if err != nil {
 		log.Fatal("Failed to load fotos: ", err)
@@ -58,9 +52,15 @@ func getIds() ([]int32) {
 }
 
 func main() {
+	db, err := sql.Open("sqlite3", "./fotos.db")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
 	e := echo.New()
 	e.GET("/api/foto-ids", func(c echo.Context) error {
-		idList := getIds()
+		idList := getIds(db)
 		return c.JSON(http.StatusOK, idList)
 	})
 	e.Logger.Fatal(e.Start(":8080"))
