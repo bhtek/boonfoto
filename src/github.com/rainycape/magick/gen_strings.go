@@ -1,0 +1,288 @@
+package magick
+
+// AUTOMATICALLY GENERATED WITH gondola gen -- DO NOT EDIT!
+
+import "fmt"
+
+var _ = fmt.Sprintf
+
+func (c Colorspace) String() string {
+	switch c {
+	case CMYK:
+		return "CMYK"
+	case GRAY:
+		return "GRAY"
+	case HSL:
+		return "HSL"
+	case HWB:
+		return "HWB"
+	case LAB:
+		return "LAB"
+	case OHTA:
+		return "OHTA"
+	case REC_601_LUMA:
+		return "REC_601_LUMA"
+	case REC_601_YCBCR:
+		return "REC_601_YCBCR"
+	case REC_709_LUMA:
+		return "REC_709_LUMA"
+	case REC_709_YCBCR:
+		return "REC_709_YCBCR"
+	case RGB:
+		return "RGB"
+	case SRGB:
+		return "SRGB"
+	case TRANSPARENT:
+		return "TRANSPARENT"
+	case XYZ:
+		return "XYZ"
+	case YCC:
+		return "YCC"
+	case YIQ:
+		return "YIQ"
+	case YPBPR:
+		return "YPBPR"
+	case YUV:
+		return "YUV"
+	}
+	return fmt.Sprintf("unknown colorspace %d", c)
+}
+func (c Composite) String() string {
+	switch c {
+	case CompositeAlpha:
+		return "Alpha"
+	case CompositeAtop:
+		return "Atop"
+	case CompositeBlend:
+		return "Blend"
+	case CompositeBlur:
+		return "Blur"
+	case CompositeBumpmap:
+		return "Bumpmap"
+	case CompositeChangeMask:
+		return "ChangeMask"
+	case CompositeClear:
+		return "Clear"
+	case CompositeColorBurn:
+		return "ColorBurn"
+	case CompositeColorDodge:
+		return "ColorDodge"
+	case CompositeColorize:
+		return "Colorize"
+	case CompositeCopy:
+		return "Copy"
+	case CompositeCopyAlpha:
+		return "CopyAlpha"
+	case CompositeCopyBlack:
+		return "CopyBlack"
+	case CompositeCopyBlue:
+		return "CopyBlue"
+	case CompositeCopyCyan:
+		return "CopyCyan"
+	case CompositeCopyGreen:
+		return "CopyGreen"
+	case CompositeCopyMagenta:
+		return "CopyMagenta"
+	case CompositeCopyRed:
+		return "CopyRed"
+	case CompositeCopyYellow:
+		return "CopyYellow"
+	case CompositeDarken:
+		return "Darken"
+	case CompositeDarkenIntensity:
+		return "DarkenIntensity"
+	case CompositeDifference:
+		return "Difference"
+	case CompositeDisplace:
+		return "Displace"
+	case CompositeDissolve:
+		return "Dissolve"
+	case CompositeDistort:
+		return "Distort"
+	case CompositeDivideDst:
+		return "DivideDst"
+	case CompositeDivideSrc:
+		return "DivideSrc"
+	case CompositeDst:
+		return "Dst"
+	case CompositeDstAtop:
+		return "DstAtop"
+	case CompositeDstIn:
+		return "DstIn"
+	case CompositeDstOut:
+		return "DstOut"
+	case CompositeDstOver:
+		return "DstOver"
+	case CompositeExclusion:
+		return "Exclusion"
+	case CompositeHardLight:
+		return "HardLight"
+	case CompositeHue:
+		return "Hue"
+	case CompositeIn:
+		return "In"
+	case CompositeIntensity:
+		return "Intensity"
+	case CompositeLighten:
+		return "Lighten"
+	case CompositeLightenIntensity:
+		return "LightenIntensity"
+	case CompositeLinearBurn:
+		return "LinearBurn"
+	case CompositeLinearDodge:
+		return "LinearDodge"
+	case CompositeLinearLight:
+		return "LinearLight"
+	case CompositeLuminize:
+		return "Luminize"
+	case CompositeMathematics:
+		return "Mathematics"
+	case CompositeMinusDst:
+		return "MinusDst"
+	case CompositeMinusSrc:
+		return "MinusSrc"
+	case CompositeModulate:
+		return "Modulate"
+	case CompositeModulusAdd:
+		return "ModulusAdd"
+	case CompositeModulusSubtract:
+		return "ModulusSubtract"
+	case CompositeMultiply:
+		return "Multiply"
+	case CompositeNo:
+		return "No"
+	case CompositeOut:
+		return "Out"
+	case CompositeOver:
+		return "Over"
+	case CompositeOverlay:
+		return "Overlay"
+	case CompositePegtopLight:
+		return "PegtopLight"
+	case CompositePinLight:
+		return "PinLight"
+	case CompositePlus:
+		return "Plus"
+	case CompositeReplace:
+		return "Replace"
+	case CompositeSaturate:
+		return "Saturate"
+	case CompositeScreen:
+		return "Screen"
+	case CompositeSoftLight:
+		return "SoftLight"
+	case CompositeSrc:
+		return "Src"
+	case CompositeSrcAtop:
+		return "SrcAtop"
+	case CompositeSrcIn:
+		return "SrcIn"
+	case CompositeSrcOut:
+		return "SrcOut"
+	case CompositeSrcOver:
+		return "SrcOver"
+	case CompositeThreshold:
+		return "Threshold"
+	case CompositeUndefined:
+		return "Undefined"
+	case CompositeVividLight:
+		return "VividLight"
+	case CompositeXor:
+		return "Xor"
+	}
+	return fmt.Sprintf("unknown composite %d", c)
+}
+func (f Filter) String() string {
+	switch f {
+	case FBessel:
+		return "Bessel"
+	case FBlackman:
+		return "Blackman"
+	case FBox:
+		return "Box"
+	case FCatrom:
+		return "Catrom"
+	case FCubic:
+		return "Cubic"
+	case FGaussian:
+		return "Gaussian"
+	case FHamming:
+		return "Hamming"
+	case FHanning:
+		return "Hanning"
+	case FHermite:
+		return "Hermite"
+	case FLanczos:
+		return "Lanczos"
+	case FMitchell:
+		return "Mitchell"
+	case FPoint:
+		return "Point"
+	case FQuadratic:
+		return "Quadratic"
+	case FSinc:
+		return "Sinc"
+	case FTriangle:
+		return "Triangle"
+	}
+	return fmt.Sprintf("unknown filter %d", f)
+}
+func (o Operator) String() string {
+	switch o {
+	case OpAdd:
+		return "Add"
+	case OpAnd:
+		return "And"
+	case OpAssign:
+		return "Assign"
+	case OpDepth:
+		return "Depth"
+	case OpDivide:
+		return "Divide"
+	case OpGamma:
+		return "Gamma"
+	case OpGaussianNoise:
+		return "GaussianNoise"
+	case OpImpulseNoise:
+		return "ImpulseNoise"
+	case OpLShift:
+		return "LShift"
+	case OpLaplacianNoise:
+		return "LaplacianNoise"
+	case OpLog:
+		return "Log"
+	case OpMax:
+		return "Max"
+	case OpMin:
+		return "Min"
+	case OpMultiplicativeNoise:
+		return "MultiplicativeNoise"
+	case OpMultiply:
+		return "Multiply"
+	case OpNegate:
+		return "Negate"
+	case OpOr:
+		return "Or"
+	case OpPoissonNoise:
+		return "PoissonNoise"
+	case OpPow:
+		return "Pow"
+	case OpRShift:
+		return "RShift"
+	case OpRandomNoise:
+		return "RandomNoise"
+	case OpSubstract:
+		return "Substract"
+	case OpThreshold:
+		return "Threshold"
+	case OpThresholdBlack:
+		return "ThresholdBlack"
+	case OpThresholdWhite:
+		return "ThresholdWhite"
+	case OpUniformNoise:
+		return "UniformNoise"
+	case OpXor:
+		return "Xor"
+	}
+	return fmt.Sprintf("unknown operator %d", o)
+}
