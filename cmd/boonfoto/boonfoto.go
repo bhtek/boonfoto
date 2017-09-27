@@ -5,9 +5,11 @@ import (
 	"database/sql"
 	"log"
 	"fmt"
+	"github.com/labstack/echo"
+	"net/http"
 )
 
-func main() {
+func getIds() ([]int32) {
 	db, err := sql.Open("sqlite3", "./fotos.db")
 	if err != nil {
 		log.Fatal(err)
@@ -26,7 +28,8 @@ func main() {
 		rows.Scan(&id)
 		idList = append(idList, id)
 	}
-	fmt.Println("Foto id list loaded.")
+
+	return idList
 	//c.Insert(&Foto{"test"})
 	//
 	//var result []Foto
@@ -53,4 +56,12 @@ func main() {
 	//
 	//w := bufio.NewWriter(f)
 	//thumbnail_image.Encode(w, nil)
+}
+
+func main() {
+	e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+		idList := getIds()
+		return c.JSON(http.StatusOK, idList)
+	})
 }
