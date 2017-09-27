@@ -4,7 +4,6 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 	"database/sql"
 	"log"
-	"fmt"
 	"github.com/labstack/echo"
 	"net/http"
 )
@@ -60,8 +59,9 @@ func getIds() ([]int32) {
 
 func main() {
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
+	e.GET("/api/foto-ids", func(c echo.Context) error {
 		idList := getIds()
 		return c.JSON(http.StatusOK, idList)
 	})
+	e.Logger.Fatal(e.Start(":8080"))
 }
