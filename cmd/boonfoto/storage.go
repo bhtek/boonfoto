@@ -51,7 +51,6 @@ func loadFoto(db *sql.DB, id int32) (*Foto) {
 	if rows.Next() {
 		var foto Foto
 		rows.Scan(&foto.Id, &foto.Path, &foto.Mtime)
-		fmt.Println("Foto: ", foto)
 		return &foto
 	} else {
 		log.Fatal("Failed to find foto[id=", id, "] to load: ", err)
