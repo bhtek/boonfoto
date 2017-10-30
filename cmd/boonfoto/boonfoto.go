@@ -6,6 +6,8 @@ import (
 	"log"
 	"github.com/labstack/echo"
 	"net/http"
+	"strconv"
+	"fmt"
 )
 
 func getIds(db *sql.DB) ([]int32) {
@@ -63,5 +65,23 @@ func main() {
 		idList := getIds(db)
 		return c.JSON(http.StatusOK, idList)
 	})
+
+	e.GET("/api/fotos/:id", func(c echo.Context) error {
+		idParam := c.Param("id")
+		if idParam == "" {
+			log.Fatal("Missing parameter id for loading.")
+		}
+
+		var id int
+		id, err := strconv.Atoi(idParam)
+		if err != nil {
+			log.Fatal("Failed to convert idParam[", idParam, "]: ", err)
+		}
+
+		foto := loadFoto(db, int32(id))
+		fmt.Println("Loaded foto: ", foto)
+		return c.JSON(http.StatusOK, foto)
+	})
+
 	e.Logger.Fatal(e.Start(":8080"))
 }

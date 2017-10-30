@@ -9,9 +9,9 @@ import (
 )
 
 type Foto struct {
-	id int32
-	path string
-	mtime time.Time
+	Id    int32     `json:"id"`
+	Path  string    `json:"path"`
+	Mtime time.Time `json:"mtime"`
 }
 
 func Count(db *sql.DB, query string, args ...interface{}) (int) {
@@ -39,6 +39,24 @@ func (sp SqlPopulator) visitImageFile(path string, modTime time.Time) {
 
 	sp.db.Exec("INSERT INTO fotos (path, mtime) VALUES (?, ?)", path, modTime)
 	fmt.Println("Added imageFile: ", path)
+}
+
+func loadFoto(db *sql.DB, id int32) (*Foto) {
+	rows, err := db.Query("SELECT id, path, mtime FROM fotos WHERE id = ?", id)
+	if err != nil {
+		log.Fatal("Failed to load foto[id=", id, "]: ", err)
+	}
+	defer rows.Close()
+
+	if rows.Next() {
+		var foto Foto
+		rows.Scan(&foto.Id, &foto.Path, &foto.Mtime)
+		fmt.Println("Foto: ", foto)
+		return &foto
+	} else {
+		log.Fatal("Failed to find foto[id=", id, "] to load: ", err)
+		return &Foto{}
+	}
 }
 
 func createTable(db *sql.DB) {
